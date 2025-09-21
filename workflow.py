@@ -87,8 +87,8 @@ class CorrectiveRAGWorkflow(Workflow):
         retriever: BaseRetriever = self.index.as_retriever(**retriever_kwargs)
         result = retriever.retrieve(query_str)
 
-        await ctx.set("retrieved_nodes", result)
-        await ctx.set("query_str", query_str)
+        await ctx.store.set("retrieved_nodes", result)
+        await ctx.store.set("query_str", query_str)
 
         return RetrieveEvent(retrieved_nodes=result)
     
@@ -98,7 +98,7 @@ class CorrectiveRAGWorkflow(Workflow):
         """Evaluate relevancy of retrieved documents with the query."""
 
         retrieved_nodes = ev.retrieved_nodes
-        query_str = await ctx.get("query_str")
+        query_str = await ctx.store.get("query_str")
 
         relevancy_results = []
 
@@ -130,7 +130,7 @@ class CorrectiveRAGWorkflow(Workflow):
     async def web_search(self, ctx: Context, ev: WebSearchEvent) -> QueryEvent: 
         """Search the transformed query with Tavily API."""
 
-        query_str = await ctx.get("query_str")
+        query_str = await ctx.store.get("query_str")
 
         prompt = DEFAULT_TRANSFORM_QUERY_TEMPLATE.format(query_str=query_str)
      
@@ -156,7 +156,7 @@ class CorrectiveRAGWorkflow(Workflow):
         relevant_text = ev.relevant_text
         search_text = ev.search_text
 
-        query_str = await ctx.get("query_str")
+        query_str = await ctx.store.get("query_str")
 
         documents = [Document(text=relevant_text + "\n" + search_text)]
         index = SummaryIndex.from_documents(documents, llm=self.llm)

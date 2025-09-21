@@ -10,3 +10,4 @@ llama-index-llms-azure-openai
 llama-index-vector-stores-qdrant
 llama-index-embeddings-fastembed
 openai
+fastembed
