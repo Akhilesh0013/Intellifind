@@ -16,6 +16,9 @@ The workflow improves the reliability of query answering by:
   <img src="./assets/preview.png" width="80%" alt="Intellifind demo"/>
 </p>
 
+## Demo link 
+I have uploaded sample demo on Youtube. You can watch it [here](https://youtu.be/Si-qY43zMy0)
+
 
 ## Pre-requisites. 
 
@@ -72,7 +75,8 @@ First make sure you sign up with Linkup API service , they do provide a free tie
 
 ##  Acknowledgements
 
-This project would not have been possible without the amazing tools and services provided by:
+I would like to express our gratitude to the following projects and their contributors for enabling advanced AI experimentation and supporting the open-source ecosystem.
+
 
 - **[Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/)**  
   For powering the large language model capabilities that enable natural language understanding and generation.
@@ -83,4 +87,3 @@ This project would not have been possible without the amazing tools and services
 - **[LlamaIndex](https://docs.llamaindex.ai/)**  
   For providing a flexible framework to connect LLMs with external data and build custom retrieval-augmented generation workflows.
 
-Special thanks to these projects and their contributors for supporting the open-source ecosystem and making experimentation with advanced AI pipelines accessible.
